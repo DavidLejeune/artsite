@@ -60,6 +60,14 @@ class AddCategoryView(CreateView):
     fields = '__all__'
     #fields = ('title', 'author', 'body')
 
+
+class AllCategoryView(ListView):
+    model = Category
+    #form_class = CategoryForm
+    template_name = 'all_categories.html'
+    fields = '__all__'
+    #fields = ('title', 'author', 'body')
+
 def CategoryView(request, cats):
     category_artworks = Artwork.objects.filter(category=cats)
     return render(request, 'categories.html', {'cats':cats.title(), 'category_artworks':category_artworks})
