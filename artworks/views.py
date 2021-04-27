@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Artwork #, Category
+from .models import Artwork, Category
 from .forms import ArtworkForm, EditArtworkForm
 from django.urls import reverse_lazy
 
@@ -53,13 +53,13 @@ class DeleteArtworkView(DeleteView):
     success_url = reverse_lazy('home')
 
 
-#class AddCategoryView(CreateView):
-#    model = Category
-#    #form_class = CategoryForm
-#    template_name = 'add_category.html'
-#    fields = '__all__'
+class AddCategoryView(CreateView):
+    model = Category
+    #form_class = CategoryForm
+    template_name = 'add_category.html'
+    fields = '__all__'
     #fields = ('title', 'author', 'body')
 
-#def CategoryView(request, cats):
-#    category_artworks = Artwork.objects.filter(category=cats)
-#    return render(request, 'categories.html', {'cats':cats.title(), 'category_artworks':category_artworks})
+def CategoryView(request, cats):
+    category_artworks = Artwork.objects.filter(category=cats)
+    return render(request, 'categories.html', {'cats':cats.title(), 'category_artworks':category_artworks})
