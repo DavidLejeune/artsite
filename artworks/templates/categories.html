@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Category
+{% endblock %}   
+
+{% block content %}
+
+{% if category_paintings %}
+
+<h1>{{ cats }} category</h1>
+    <ul>
+        {% for painting in category_paintings %}
+            <li><a href="{% url 'painting-detail' painting.pk %}">{{ painting.title }}</a> - {{ painting.category}} - {{ painting.author.first_name }} {{ painting.author.last_name }} - {{ painting.painting_date }} - 
+                {% if user.is_authenticated %}
+                    <small>
+                        (<a href="{% url 'update-painting' painting.pk %}">Edit</a>) 
+                    (<a href="{% url 'delete-painting' painting.pk %}">Delete</a>)
+                    </small><br/>
+                {% else %}
+
+                {% endif %}  
+                
+                
+                {{ painting.body|slice:":100"|safe }}</li>
+
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+<div class="d-flex justify-content-center">
+    <div class="alert alert-dark" role="alert">
+        Sorry, this page doesn't exist .
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ painting.title }}
+{% endblock %}   
+
+{% block content %}
+<h1>{{ painting.title }}</h1>
+<small>By : {{ painting.author.first_name }} {{ painting.author.last_name }} 
+    {% if user.is_authenticated %}
+        <small>
+            (<a href="{% url 'update-painting' painting.pk %}">Edit</a>) 
+        (<a href="{% url 'delete-painting' painting.pk %}">Delete</a>)
+        </small><br/>
+    {% else %}
+
+    {% endif %}  
+
+<br/>
+<i>{{ painting.painting_date }}</i>
+</small>
+<hr>
+<br/>
+{{ painting.body|safe }}
+<br/><br/>
+<a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
+{% endblock %}

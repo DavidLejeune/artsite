@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete painting
+{% endblock %}   
+
+{% block content %}
+<!--<h1>Delete painting</h1>-->
+
+{% if user.is_authenticated %}
+    <h3>Delete : {{ painting.title }}</h3>
+    <br/>
+    <div class="form-control">
+        <form method="POST">
+            {% csrf_token %}<br/>
+            <strong>Are you sure ?!</strong><br/><br/>
+            <button class="btn btn-primary">Delete Painting</button>
+    </div>
+{% else %}
+
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-dark" role="alert">
+            You are not allowed here! (and you know it ...)
+        </div>
+    </div>
+
+
+{% endif %}  
+
+
+
+
+{% endblock %}
