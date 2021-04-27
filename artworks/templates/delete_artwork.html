@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add a painting
+Delete artwork
 {% endblock %}   
 
 {% block content %}
+<!--<h1>Delete artwork</h1>-->
 
 {% if user.is_authenticated %}
-    <h1>Add a painting</h1>
+    <h3>Delete : {{ artwork.title }}</h3>
+    <br/>
     <div class="form-control">
         <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p}}
-            <button class="btn btn-primary">Add Painting</button>
+            {% csrf_token %}<br/>
+            <strong>Are you sure ?!</strong><br/><br/>
+            <button class="btn btn-primary">Delete Artwork</button>
     </div>
 {% else %}
 
@@ -24,6 +26,8 @@ Add a painting
 
 
 {% endif %}  
+
+
 
 
 {% endblock %}

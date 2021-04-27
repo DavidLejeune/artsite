@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ artwork.title }}
+{% endblock %}   
+
+{% block content %}
+<h1>{{ artwork.title }}</h1>
+<small>By : {{ artwork.author.first_name }} {{ artwork.author.last_name }} 
+    {% if user.is_authenticated %}
+        <small>
+            (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
+        (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
+        </small><br/>
+    {% else %}
+
+    {% endif %}  
+
+<br/>
+<i>{{ artwork.artwork_date }}</i>
+</small>
+<hr>
+<br/>
+{{ artwork.body|safe }}
+<br/><br/>
+<a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
+{% endblock %}
