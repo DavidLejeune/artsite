@@ -22,7 +22,7 @@ urlpatterns = [
     path('', include('artworks.urls')),
 
     #first django auth urls, then normal urls reference
-    #path('members/', include('django.contrib.auth.urls')),
-    #path('members/', include('members.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
 ]
 

@@ -10,7 +10,7 @@ class Artwork(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     artwork_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=255)
+    category = models.CharField(max_length=255, default='no category')
     
 
     def __str__(self):
@@ -18,3 +18,14 @@ class Artwork(models.Model):
 
     def get_absolute_url(self):
         return reverse('artwork-detail', args=(str(self.id)))
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255, default='no category')
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        #return reverse('painting-detail', args=(str(self.id)))
+        return reverse('home')
