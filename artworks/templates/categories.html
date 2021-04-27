@@ -6,23 +6,23 @@ Category
 
 {% block content %}
 
-{% if category_paintings %}
+{% if category_artworks %}
 
 <h1>{{ cats }} category</h1>
     <ul>
-        {% for painting in category_paintings %}
-            <li><a href="{% url 'painting-detail' painting.pk %}">{{ painting.title }}</a> - {{ painting.category}} - {{ painting.author.first_name }} {{ painting.author.last_name }} - {{ painting.painting_date }} - 
+        {% for artwork in category_artworks %}
+            <li><a href="{% url 'artwork-detail' artwork.pk %}">{{ artwork.title }}</a> - {{ artwork.category}} - {{ artwork.author.first_name }} {{ artwork.author.last_name }} - {{ artwork.artwork_date }} - 
                 {% if user.is_authenticated %}
                     <small>
-                        (<a href="{% url 'update-painting' painting.pk %}">Edit</a>) 
-                    (<a href="{% url 'delete-painting' painting.pk %}">Delete</a>)
+                        (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
+                    (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
                     </small><br/>
                 {% else %}
 
                 {% endif %}  
                 
                 
-                {{ painting.body|slice:":100"|safe }}</li>
+                {{ artwork.body|slice:":100"|safe }}</li>
 
         {% endfor %}
     </ul>
