@@ -17,7 +17,7 @@ class Artwork(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('artwork-detail', args=(str(self.id)))
+        return reverse('artwork-detail', args=[str(self.id)])
 
 
 class Category(models.Model):
