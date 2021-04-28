@@ -4,6 +4,18 @@ from django.urls import reverse
 from datetime import datetime, date
 
 # Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        #return reverse('painting-detail', args=(str(self.id)))
+        return reverse('home')
+
+
 class Artwork(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=255)
@@ -19,13 +31,3 @@ class Artwork(models.Model):
     def get_absolute_url(self):
         return reverse('artwork-detail', args=[str(self.id)])
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=255, default='No category')
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        #return reverse('painting-detail', args=(str(self.id)))
-        return reverse('home')

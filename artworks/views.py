@@ -5,19 +5,32 @@ from .forms import ArtworkForm, EditArtworkForm
 from django.urls import reverse_lazy
 
 # Create your views here.
-def home(request):
-    return render(request, 'home.html' , {})
 
 class HomeView(ListView):
     model = Artwork
     template_name = 'home.html'
 
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class ArtworkView(ListView):
     model = Artwork
     template_name = 'artworks.html'
+    cats = Category.objects.all()
     #ordering = ['-id']
     ordering = ['-artwork_date']
+
+    def get_context_data(self, *args):
+        cat_menu = Category.objects.all()
+        context = super(ArtworkView, self).get_context_data(*args)
+        context["cat_menu"] = cat_menu
+        return context
+
+
+
 
 class ArtworkDetailView(DetailView):
     model = Artwork
@@ -61,12 +74,15 @@ class AddCategoryView(CreateView):
     #fields = ('title', 'author', 'body')
 
 
+
 class AllCategoryView(ListView):
     model = Category
     #form_class = CategoryForm
     template_name = 'all_categories.html'
     fields = '__all__'
     #fields = ('title', 'author', 'body')
+
+    
 
 def CategoryView(request, cats):
     category_artworks = Artwork.objects.filter(category=cats.replace('-',' '))
