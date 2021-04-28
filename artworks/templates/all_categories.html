@@ -10,7 +10,7 @@ Artworks
     {% for category in object_list %}
         <li>{{ category.name }}</li>
     {% endfor %}
-    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
         <br><br>
         <a class="btn btn-primary" href="{% url 'add-category' %}">Add a category</a>
     {% endif %}

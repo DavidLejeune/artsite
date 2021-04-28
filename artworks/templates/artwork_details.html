@@ -7,7 +7,7 @@
 {% block content %}
 <h1>{{ artwork.title }}</h1>
 <small>By : {{ artwork.author.first_name }} {{ artwork.author.last_name }} 
-    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
         <small>
             (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
         (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)

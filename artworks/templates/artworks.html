@@ -11,7 +11,7 @@ Artworks
         <li><a href="{% url 'artwork-detail' artwork.pk %}">{{ artwork.title }}</a> - 
             <a href="{% url 'category' artwork.category %}">{{ artwork.category}}</a> - 
             {{ artwork.author.first_name }} {{ artwork.author.last_name }} - {{ artwork.artwork_date }} - 
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
                 <small>
                     (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
                 (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)

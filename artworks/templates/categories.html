@@ -12,7 +12,7 @@ Category
     <ul>
         {% for artwork in category_artworks %}
             <li><a href="{% url 'artwork-detail' artwork.pk %}">{{ artwork.title }}</a> - {{ artwork.category}} - {{ artwork.author.first_name }} {{ artwork.author.last_name }} - {{ artwork.artwork_date }} - 
-                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
                     <small>
                         (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
                     (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)

@@ -6,7 +6,7 @@ Add artwork
 
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if user.is_superuser %}
     <h1>Add artwork</h1>
     <div class="form-control">
         <form method="POST">

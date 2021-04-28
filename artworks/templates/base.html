@@ -27,31 +27,42 @@
               <a class="nav-link active" aria-current="page" href="{% url 'artworks' %}">Artworks</a>
             </li>
   
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
 
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'add-artwork' %}">Add Artwork</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'all-category' %}">Categories</a>
-            </li>
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'add-category' %}">Add Category</a>
-            </li>
-            -->
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-        {% else %}
-              <li class="nav-item" >
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
-        {% endif %}
-            
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add-artwork' %}">Add Artwork</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'all-category' %}">Categories</a>
+                </li>
+                <!--
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add-category' %}">Add Category</a>
+                </li>
+                -->
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+              {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+              {% else %}  
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+
+              {% endif %} 
+
+            {% endif %}
+                
             <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
