@@ -6,6 +6,8 @@ Artworks
 
 {% block content %}
 <h1>Artworks</h1>
+
+
 <ul>
     {% for artwork in object_list %}
         <li><a href="{% url 'artwork-detail' artwork.pk %}">{{ artwork.title }}</a> - 
