@@ -8,7 +8,9 @@ Artworks
 <h1>Categories</h1>
 <ul>
     {% for category in object_list %}
-        <li>{{ category.name }}</li>
+    
+    <li><a class="dropdown-item" href="{% url 'category' category.name|slugify %}">{{ category.name }}</a></li>
+        
     {% endfor %}
     {% if user.is_superuser %}
         <br><br>
