@@ -16,31 +16,33 @@ class HomeView(ListView):
         context["cat_menu"] = cat_menu
         return context
 
-class ArtworkView(ListView):
-    model = Artwork
-    template_name = 'artworks.html'
-    cats = Category.objects.all()
-    #ordering = ['-id']
-    ordering = ['-artwork_date']
 
-    def get_context_data(self, *args):
+class ArtworkDetailView(DetailView):
+    model = Artwork
+    template_name = 'artwork_details.html'
+
+    
+    def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        context = super(ArtworkView, self).get_context_data(*args)
+        context = super(ArtworkDetailView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
         return context
 
 
 
 
-class ArtworkDetailView(DetailView):
-    model = Artwork
-    template_name = 'artwork_details.html'
-
 class ArtworkView(ListView):
     model = Artwork
     template_name = 'artworks.html'
     #ordering = ['-id']
     ordering = ['-artwork_date']
+
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(ArtworkView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class AddArtworkView(CreateView):
     model = Artwork
@@ -48,6 +50,12 @@ class AddArtworkView(CreateView):
     template_name = 'add_artwork.html'
     #fields = '__all__'
     #fields = ('title', 'author', 'body')
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddArtworkView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 
 class UpdateArtworkView(UpdateView):
@@ -56,6 +64,12 @@ class UpdateArtworkView(UpdateView):
     template_name = 'update_artwork.html'
     #fields = '__all__'
     #fields = ('title', 'author', 'body')
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(UpdateArtworkView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 
 class DeleteArtworkView(DeleteView):
@@ -64,6 +78,12 @@ class DeleteArtworkView(DeleteView):
     #fields = '__all__'
     #fields = ('title', 'author', 'body')
     success_url = reverse_lazy('home')
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(DeleteArtworkView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 
 class AddCategoryView(CreateView):
@@ -73,6 +93,11 @@ class AddCategoryView(CreateView):
     fields = '__all__'
     #fields = ('title', 'author', 'body')
 
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddCategoryView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 
 class AllCategoryView(ListView):
@@ -81,6 +106,12 @@ class AllCategoryView(ListView):
     template_name = 'all_categories.html'
     fields = '__all__'
     #fields = ('title', 'author', 'body')
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AllCategoryView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
     
 
