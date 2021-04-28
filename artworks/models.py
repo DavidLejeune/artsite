@@ -13,7 +13,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         #return reverse('painting-detail', args=(str(self.id)))
-        return reverse('home')
+        return reverse('all-category')
 
 
 class Artwork(models.Model):
