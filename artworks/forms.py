@@ -36,7 +36,7 @@ class EditArtworkForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'This is a placeholder'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             #'author': forms.Select(attrs={'class': 'form-control'}),
-            #category': forms.Select(choices=choice_list,attrs={'class': 'form-control'}),
+            'category': forms.Select(choices=choice_list,attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
 
         }

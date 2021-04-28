@@ -9,7 +9,7 @@ Artworks
 <ul>
     {% for artwork in object_list %}
         <li><a href="{% url 'artwork-detail' artwork.pk %}">{{ artwork.title }}</a> - 
-            <a href="{% url 'category' artwork.category %}">{{ artwork.category}}</a> - 
+            <a href="{% url 'category' artwork.category|slugify %}">{{ artwork.category}}</a> - 
             {{ artwork.author.first_name }} {{ artwork.author.last_name }} - {{ artwork.artwork_date }} - 
             {% if user.is_superuser %}
                 <small>
