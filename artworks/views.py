@@ -118,3 +118,5 @@ class AllCategoryView(ListView):
 def CategoryView(request, cats):
     category_artworks = Artwork.objects.filter(category=cats.replace('-',' '))
     return render(request, 'categories.html', {'cats':cats.title().replace('-',' '), 'category_artworks':category_artworks})
+
+    
