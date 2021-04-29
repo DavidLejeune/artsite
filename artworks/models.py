@@ -24,6 +24,9 @@ class Artwork(models.Model):
     artwork_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='No category')
     likes = models.ManyToManyField(User, related_name='artwork_post')
+
+    def total_likes(self):
+        return self.likes.count()
     
 
     def __str__(self):

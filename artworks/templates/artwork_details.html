@@ -14,13 +14,12 @@
             <small>
                 (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
             (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
-            </small><br/>
+            </small>
         {% endif %}
     {% else %}
 
     {% endif %}    
-
-<br/>
+    <br/>
 <i>{{ artwork.artwork_date }}</i>
 </small>
 <hr>
@@ -28,11 +27,32 @@
 {{ artwork.body|safe }}
 <br/><br/>
 
+<hr>
+<br/>
+
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-6">
+        <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
+            {% csrf_token %}
+            {{ total_likes }} <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary pull-left">Like</button>
+        </form>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6">
+        <form>
+            <a href="{% url 'artworks' %}"  class="btn btn-secondary pull-right">Back</a>
+         </form>
+      </div>
+    </div>
+  </div>
+
+
+<!--
 <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
     {% csrf_token %}
-    <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary btn-sm">Like</button>
-    <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
+    {{ total_likes }} <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary pull-left">Like</button>
+    <a href="{% url 'artworks' %}"  class="btn btn-secondary pull-right">Back</a>
 </form>
-
+-->
 
 {% endblock %}

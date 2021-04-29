@@ -27,6 +27,10 @@ class ArtworkDetailView(DetailView):
         cat_menu = Category.objects.all()
         context = super(ArtworkDetailView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
+
+        likes_obj = get_object_or_404(Artwork, id=self.kwargs['pk'])
+        total_likes = likes_obj.total_likes()
+        context["total_likes"] = total_likes
         return context
 
 
