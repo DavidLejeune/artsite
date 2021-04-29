@@ -30,26 +30,27 @@
 <hr>
 <br/>
 
-<div class="container">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-6">
-        <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
-            {% csrf_token %}
-            {{ total_likes }} 
-            {% if liked %}
-                <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-info pull-left">Unlike</button>
-            {% else %}
-                <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary pull-left">Like</button>
-            {% endif %}
-        </form>
+
+        {% if user.is_authenticated %}
+            <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
+                {% csrf_token %}
+                {{ total_likes }} likes <br>
+                {% if liked %}
+                    <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-info">Unlike</button>
+                {% else %}
+                    <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary">Like</button>
+                {% endif %}
+                
+                <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
+            </form>
+        {% else %} 
+            <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
+        {% endif %} 
+        
       </div>
-      <div class="col-12 col-sm-6 col-md-6">
+      <div>
         <form>
-            <a href="{% url 'artworks' %}"  class="btn btn-secondary pull-right">Back</a>
          </form>
-      </div>
-    </div>
-  </div>
 
 
 <!--
