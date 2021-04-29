@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
-from .views import ArtworkView, HomeView , ArtworkDetailView, AddArtworkView, UpdateArtworkView, DeleteArtworkView , AddCategoryView, CategoryView, AllCategoryView
+from .views import ArtworkView, HomeView , ArtworkDetailView, AddArtworkView, UpdateArtworkView, DeleteArtworkView , AddCategoryView, CategoryView, AllCategoryView, LikeView
+
+
 urlpatterns = [
     #path('', views.home , name="home"),
     path('', HomeView.as_view(), name="home"),
@@ -12,5 +14,5 @@ urlpatterns = [
     path('all_categories/' , AllCategoryView.as_view(), name="all-category"),
     path('add_category/' , AddCategoryView.as_view(), name="add-category"),
     path('category/<str:cats>/' , CategoryView, name="category"),
-
+    path('like/<int:pk>' , LikeView, name="like-artwork"),
 ]
