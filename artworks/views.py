@@ -123,7 +123,7 @@ def CategoryView(request, cats):
 def LikeView(request, pk):
     post = get_object_or_404(Artwork, id=request.POST.get('artwork_id'))
     post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('artwork_detail', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('artwork-detail', args=[str(pk)]))
 
 
 
