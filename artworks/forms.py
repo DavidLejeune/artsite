@@ -26,6 +26,7 @@ class ArtworkForm(forms.ModelForm):
             'category': forms.Select(choices=choice_list,attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
 
+
         }
 
 
