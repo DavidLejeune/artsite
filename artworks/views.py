@@ -31,6 +31,13 @@ class ArtworkDetailView(DetailView):
         likes_obj = get_object_or_404(Artwork, id=self.kwargs['pk'])
         total_likes = likes_obj.total_likes()
         context["total_likes"] = total_likes
+
+        
+        liked = False
+        if likes_obj.likes.filter(id=self.request.id).exists():
+            liked = True
+        context["liked"] = liked
+
         return context
 
 
@@ -126,7 +133,14 @@ def CategoryView(request, cats):
 
 def LikeView(request, pk):
     post = get_object_or_404(Artwork, id=request.POST.get('artwork_id'))
-    post.likes.add(request.user)
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+    
     return HttpResponseRedirect(reverse('artwork-detail', args=[str(pk)]))
 
 
