@@ -42,8 +42,6 @@
             <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
                 {% csrf_token %}
 
-
-                    <br>
                 {% if liked %}
                     <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-info">Unlike</button>
                 {% else %}
