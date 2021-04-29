@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Artwork, Category
 from .forms import ArtworkForm, EditArtworkForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -118,5 +119,12 @@ class AllCategoryView(ListView):
 def CategoryView(request, cats):
     category_artworks = Artwork.objects.filter(category=cats.replace('-',' '))
     return render(request, 'categories.html', {'cats':cats.title().replace('-',' '), 'category_artworks':category_artworks})
+
+def LikeView(request, pk):
+    post = get_object_or_404(Artwork, id=request.POST.get('artwork_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('artwork_detail', args=[str(pk)]))
+
+
 
     
