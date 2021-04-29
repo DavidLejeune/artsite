@@ -7,13 +7,16 @@ Edit artwork
 {% block content %}
 
 {% if user.is_superuser %}
-    <h1>Edit artwork</h1>
-    <div class="form-control">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p}}
-            <button class="btn btn-primary">Edit Artwork</button>
-    </div>
+
+    {% if artwork.author.id == user.id %}
+        <h1>Edit artwork</h1>
+        <div class="form-control">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button class="btn btn-primary">Edit Artwork</button>
+        </div>
+    {% endif %}
 {% else %}
 
     <div class="d-flex justify-content-center">

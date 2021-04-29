@@ -7,14 +7,18 @@
 {% block content %}
 <h1>{{ artwork.title }}</h1>
 <small>By : {{ artwork.author.first_name }} {{ artwork.author.last_name }} 
+
+
     {% if user.is_superuser %}
-        <small>
-            (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
-        (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
-        </small><br/>
+        {% if artwork.author.id == user.id %}
+            <small>
+                (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
+            (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
+            </small><br/>
+        {% endif %}
     {% else %}
 
-    {% endif %}  
+    {% endif %}    
 
 <br/>
 <i>{{ artwork.artwork_date }}</i>

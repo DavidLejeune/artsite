@@ -8,14 +8,17 @@ Delete artwork
 <!--<h1>Delete artwork</h1>-->
 
 {% if user.is_superuser %}
-    <h3>Delete : {{ artwork.title }}</h3>
-    <br/>
-    <div class="form-control">
-        <form method="POST">
-            {% csrf_token %}<br/>
-            <strong>Are you sure ?!</strong><br/><br/>
-            <button class="btn btn-primary">Delete Artwork</button>
-    </div>
+
+    {% if artwork.author.id == user.id %}
+        <h3>Delete : {{ artwork.title }}</h3>
+        <br/>
+        <div class="form-control">
+            <form method="POST">
+                {% csrf_token %}<br/>
+                <strong>Are you sure ?!</strong><br/><br/>
+                <button class="btn btn-primary">Delete Artwork</button>
+        </div>
+    {% endif %}
 {% else %}
 
     <div class="d-flex justify-content-center">

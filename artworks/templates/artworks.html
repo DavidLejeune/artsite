@@ -14,10 +14,13 @@ Artworks
             <a href="{% url 'category' artwork.category|slugify %}">{{ artwork.category}}</a> - 
             {{ artwork.author.first_name }} {{ artwork.author.last_name }} - {{ artwork.artwork_date }} - 
             {% if user.is_superuser %}
-                <small>
-                    (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
-                (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
-                </small><br/>
+            
+                {% if artwork.author.id == user.id %}
+                    <small>
+                        (<a href="{% url 'update-artwork' artwork.pk %}">Edit</a>) 
+                    (<a href="{% url 'delete-artwork' artwork.pk %}">Delete</a>)
+                    </small><br/>
+                {% endif %}
             {% else %}
 
             {% endif %}  
