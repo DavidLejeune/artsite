@@ -30,16 +30,17 @@
 <hr>
 <br/>
 
+{{ total_likes }} 
+{% if total_likes == 1 %}
+    like 
+{% else %}
+    likes
+{% endif %}
+<br>
 
         {% if user.is_authenticated %}
             <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
                 {% csrf_token %}
-                {{ total_likes }} 
-                    {% if total_likes == 1 %}
-                        like 
-                    {% else %}
-                        likes
-                    {% endif %}
 
 
                     <br>
@@ -52,6 +53,8 @@
                 <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
             </form>
         {% else %} 
+            <small>You must login to like</small><br>
+            <a href="{% url 'login' %}"  class="btn btn-warning">Login</a>
             <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
         {% endif %} 
         
