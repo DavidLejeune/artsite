@@ -27,5 +27,12 @@
 <br/>
 {{ artwork.body|safe }}
 <br/><br/>
+
+<form action="{% url 'like_artwork' artwork.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary btn-sm">Like</button>
+</form>
+
+
 <a href="{% url 'artworks' %}"  class="btn btn-secondary">Back</a>
 {% endblock %}
