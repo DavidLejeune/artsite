@@ -34,7 +34,15 @@
         {% if user.is_authenticated %}
             <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
                 {% csrf_token %}
-                {{ total_likes }} likes <br>
+                {{ total_likes }} 
+                    {% if total_likes == 1 %}
+                        like 
+                    {% else %}
+                        likes
+                    {% endif %}
+
+
+                    <br>
                 {% if liked %}
                     <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-info">Unlike</button>
                 {% else %}
