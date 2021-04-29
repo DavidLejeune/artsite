@@ -18,7 +18,7 @@ class ArtworkForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter a cool title'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
 
-            'author': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'user name', 'id':'userIDauthor'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'userIDauthor'}),
             #'author': forms.Select(attrs={'class': 'form-control'}),
 
             #'category': forms.Select(attrs={'class': 'form-control'}),
