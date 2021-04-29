@@ -35,7 +35,12 @@
       <div class="col-12 col-sm-6 col-md-6">
         <form action="{% url 'like-artwork' artwork.pk %}" method="POST">
             {% csrf_token %}
-            {{ total_likes }} <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary pull-left">Like</button>
+            {{ total_likes }} 
+            {% if liked %}
+                <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-info pull-left">Unlike</button>
+            {% else %}
+                <button type="submit", name="artwork_id", value="{{ artwork.id }}", class="btn btn-primary pull-left">Like</button>
+            {% endif %}
         </form>
       </div>
       <div class="col-12 col-sm-6 col-md-6">

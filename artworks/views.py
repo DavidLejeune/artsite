@@ -34,7 +34,7 @@ class ArtworkDetailView(DetailView):
 
         
         liked = False
-        if likes_obj.likes.filter(id=self.request.id).exists():
+        if likes_obj.likes.filter(id=self.request.user.id).exists():
             liked = True
         context["liked"] = liked
 
