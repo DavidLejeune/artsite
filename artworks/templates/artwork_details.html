@@ -24,7 +24,10 @@
 </small>
 <hr>
 <br/>
-<img src="{{ artwork.header_image.url }}" class="img-fluid" ></img>
+{% if artwork.header_image %}
+    <img src="{{ artwork.header_image.url }}" class="img-fluid" ></img>
+{% endif %}
+
 {{ artwork.body|safe }}
 <br/><br/>
 
@@ -70,5 +73,4 @@
     <a href="{% url 'artworks' %}"  class="btn btn-secondary pull-right">Back</a>
 </form>
 -->
-
 {% endblock %}
