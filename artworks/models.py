@@ -23,7 +23,7 @@ class Artwork(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     #body = models.TextField()
     body = RichTextField(blank=True, null=True)
-    snippet = models.CharField(max_length=255, default='Snippet preview of the artwork description')
+    snippet = models.CharField(max_length=255)
     artwork_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='No category')
     likes = models.ManyToManyField(User, related_name='artwork_post')
