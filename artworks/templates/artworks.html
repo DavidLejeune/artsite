@@ -26,7 +26,9 @@ Artworks
             {% endif %}  
             
             
-            {{ artwork.body|slice:":100"|safe }}</li>
+            {{ artwork.snippet }}
+            {# {{ artwork.body|slice:":100"|safe }} #}
+        </li>
 
     {% endfor %}
 </ul>
