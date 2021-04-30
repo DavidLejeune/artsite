@@ -11,7 +11,7 @@ for item in choices:
 class ArtworkForm(forms.ModelForm):
     class Meta:
         model = Artwork
-        fields =('title' , 'title_tag', 'author', 'category', 'body' ,'snippet')
+        fields =('title' , 'title_tag', 'author', 'category', 'header_image', 'body' ,'snippet')
         #fields =('title' , 'title_tag', 'author', 'body')
 
         widgets = {
@@ -26,6 +26,8 @@ class ArtworkForm(forms.ModelForm):
             'category': forms.Select(choices=choice_list,attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+
+            
 
 
         }
