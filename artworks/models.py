@@ -41,7 +41,8 @@ class Artwork(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    bio = RichTextField(blank=True, null=True)
+    #bio = RichTextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return str(self.user)
