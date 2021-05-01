@@ -101,23 +101,23 @@
                     
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'edit_profile' %}">Settings</a>
+                        <a class="nav-link" href="{% url 'edit_profile' %}">&nbsp;Settings</a>
                       </li>
                       <li><hr class="dropdown-divider"></li>
 
                       {% if user.profile.id %}
 
                         <li class="nav-item">
-                          <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a>
+                          <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}">&nbsp;Edit Profile</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}">Show Profile</a>
+                          <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}">&nbsp;Show Profile</a>
                         </li>
 
                       {% else %} 
 
                         <li class="nav-item">
-                          <a class="nav-link" href="{% url 'create_profile_page' %}">Create Profile</a>
+                          <a class="nav-link" href="{% url 'create_profile_page' %}">&nbsp;Create Profile</a>
                         </li>
 
 
@@ -126,7 +126,7 @@
 
                         <li><hr class="dropdown-divider"></li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">&nbsp;Logout</a>
                       </li>
                     </ul>
                   </li>
@@ -148,10 +148,10 @@
                 
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    <a class="nav-link" href="{% url 'register' %}">&nbsp;Register</a>
                   </li>
                   <li class="nav-item" >
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'login' %}">&nbsp;Login</a>
                   </li>
                 </ul>
               </li>
