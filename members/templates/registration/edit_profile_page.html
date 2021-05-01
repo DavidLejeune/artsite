@@ -6,10 +6,21 @@ Edit profile page
 
 {% block content %}
 
-{% if user.is_superuser %}
+{% if user.is_authenticated %}
     <h1>Edit profile page</h1>
+    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
     <br>
-    <div class="form-control">
+    
+    
+    {% if artwork.author.profile.profile_pic %}
+        <img src="{{ user.profile.profile_pic.url }}"  class="rounded-circle" width=200 height=200></img>
+    {% else %}
+        <img src="/media/images/profile/default-profile.png"  class="rounded" width=200 height=200></img>
+    {% endif %}
+<br>
+<br>
+
+    <div class="form-control  border-0">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p}}

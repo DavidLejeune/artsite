@@ -54,5 +54,5 @@ class ShowProfilePageView(DetailView):
 class EditProfilePageView(generic.UpdateView):
     model = Profile
     template_name = 'registration/edit_profile_page.html'
-    fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url']
+    fields = ['profile_pic', 'bio', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url']
 
