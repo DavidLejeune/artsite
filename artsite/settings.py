@@ -149,7 +149,7 @@ STATICFILES_DIRS  = [
 
 
 LOGIN_REDIRECT_URL = 'login_success'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'logout_success'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')

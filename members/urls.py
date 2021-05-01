@@ -17,5 +17,6 @@ urlpatterns = [
     path('create_profile_page/' , CreateProfilePageView.as_view(), name='create_profile_page'),
     
     path('login_success', views.login_success, name='login_success'),
+    path('logout_success', views.logout_success, name='logout_success'),
 
 ]
