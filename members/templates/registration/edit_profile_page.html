@@ -7,26 +7,37 @@ Edit profile page
 {% block content %}
 
 {% if user.is_authenticated %}
-    <h1>Edit profile page</h1>
-    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <br>
-    
-    
-    {% if artwork.author.profile.profile_pic %}
-        <img src="{{ user.profile.profile_pic.url }}"  class="rounded-circle" width=200 height=200></img>
-    {% else %}
-        <img src="/media/images/profile/default-profile.png"  class="rounded" width=200 height=200></img>
-    {% endif %}
-<br>
-<br>
+    {% if user.id == profile.user.id %}
 
-    <div class="form-control  border-0">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p}}
-            <button class="btn btn-primary">Save Changes</button>
-    </div>
+        <h1>Edit profile page</h1>
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <br>
+        
+        
+        {% if artwork.author.profile.profile_pic %}
+            <img src="{{ user.profile.profile_pic.url }}"  class="rounded-circle" width=200 height=200></img>
+        {% else %}
+            <img src="/media/images/profile/default-profile.png"  class="rounded" width=200 height=200></img>
+        {% endif %}
+        <br>
+        <br>
 
+        <div class="form-control  border-0">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button class="btn btn-primary">Save Changes</button>
+        </div>
+
+    {% else %} 
+
+        <div class="d-flex justify-content-center">
+            <div class="alert alert-dark" role="alert">
+                You are not allowed here! (and you know it ...)
+            </div>
+        </div>
+
+    {% endif %} 
 
 
 {% else %}
