@@ -148,7 +148,7 @@ STATICFILES_DIRS  = [
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'login_success'
 LOGOUT_REDIRECT_URL = 'home'
 
 MEDIA_URL = '/media/'

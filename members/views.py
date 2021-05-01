@@ -35,6 +35,8 @@ def password_success(request):
     return render(request, 'registration/password_success.html', {})
 
 
+def login_success(request):
+    return render(request, 'registration/login_success.html', {})
 
 class ShowProfilePageView(DetailView):
     model = Profile
