@@ -88,8 +88,16 @@
       <div class="col-md-10">
         <div class="card-body">
           <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
+          
+          <p class="card-text"><small class="text-muted">
+              <a href="{{ artwork.author.profile.website.url }}">Website</a> | 
+              <a href="{{ artwork.author.facebook.website.url }}">Facebook</a> | 
+              <a href="{{ artwork.author.instagram.website.url }}">Instagram</a> | 
+              <a href="{{ artwork.author.twitter.website.url }}">Twitter</a>
+          </small></p>
+
           <p class="card-text">{{ artwork.author.profile.bio }}</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
         </div>
       </div>
     </div>
