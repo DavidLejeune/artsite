@@ -41,8 +41,8 @@ class Artwork(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    #bio = RichTextField(blank=True, null=True)
     bio = RichTextField(blank=True, null=True)
-    #bio = models.TextField(blank=True, null=True)
     profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/", default='images/profile/default-profile.png')
     website_url = models.CharField(max_length=255, blank=True, null=True)
     facebook_url = models.CharField(max_length=255, blank=True, null=True)

@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.models import User
 from django import forms
 from artworks.models import Profile
+from ckeditor.fields import RichTextField
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -71,5 +72,23 @@ class ProfilePageForm(forms.ModelForm):
             'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
 
         }
+
+class EditProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields =('profile_pic', 'bio', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url')
+
+
+        widgets = {
+            #'profile_pic': forms.ImageField(null=True, blank=True, upload_to="images/profile/", default='images/profile/default-profile.png'),
+            'bio': forms.Textarea(attrs={'widget': 'RichTextField', 'class': 'form-control'}),
+            #'author': forms.Select(attrs={'class': 'form-control'}),
+            'website_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }
+
 
 
