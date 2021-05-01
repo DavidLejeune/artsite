@@ -36,7 +36,7 @@ class ArtworkForm(forms.ModelForm):
 class EditArtworkForm(forms.ModelForm):
     class Meta:
         model = Artwork
-        fields =('title' , 'title_tag', 'category', 'body', 'snippet')
+        fields =('title' , 'title_tag', 'category', 'header_image', 'body', 'snippet')
         #fields =('title' , 'title_tag', 'body')
 
         widgets = {
