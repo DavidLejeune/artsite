@@ -14,7 +14,7 @@ Edit profile page
         <br>
         
         
-        {% if artwork.author.profile.profile_pic %}
+        {% if user.profile.profile_pic.url %}
             <img src="{{ user.profile.profile_pic.url }}"  class="rounded-circle" width=200 height=200></img>
         {% else %}
             <img src="/media/images/profile/default-profile.png"  class="rounded" width=200 height=200></img>
@@ -33,7 +33,7 @@ Edit profile page
 
         <div class="d-flex justify-content-center">
             <div class="alert alert-dark" role="alert">
-                You are not allowed here! (and you know it ...)
+                You are not the correct user tho edit this page!  (and you know it ...)
             </div>
         </div>
 
