@@ -12,4 +12,55 @@ User Profile
 
 
 
+<div class="card mb-3 border-0">
+    <div class="row g-0">
+      <div class="col-md-2">
+            {% if artwork.author.profile.profile_pic %}
+            <a href="{% url 'show_profile_page' artwork.author.profile.id %}" class="text-decoration-none text-reset">
+                <img src="{{ artwork.author.profile.profile_pic.url }}" width=200 height=200 alt="{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}"  class="rounded">
+            </a>
+            {% endif %}
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+            {%  if artwork.author.profile.profile_pic %}
+
+            <a href="{% url 'show_profile_page' artwork.author.profile.id %}" class="text-decoration-none text-reset">
+                <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
+              </a>
+            {% else %}
+
+                <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
+            {% endif %}
+            
+          <p class="card-text"><small class="text-muted">
+              {% if artwork.author.profile.website_url %}
+                <a href="{{ artwork.author.profile.website_url }}">Website</a>
+              {% endif %}
+              {% if artwork.author.profile.facebook_url %}
+                | <a href="{{ artwork.author.facebook.website_url }}">Facebook</a>
+              {% endif %}
+              {% if artwork.author.profile.instagram_url %}
+                | <a href="{{ artwork.author.instagram.website_url }}">Instagram</a>
+              {% endif %}
+              {% if artwork.author.profile.twitter_url %}
+                | <a href="{{ artwork.author.twitter.website_url }}">Twitter</a>
+              {% endif %}
+          </small></p>
+
+          <p class="card-text">{{ artwork.author.profile.bio }}</p>
+          <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
 {% endblock %}
