@@ -19,7 +19,7 @@ User Profile
                 <img src="{{ page_user.profile_pic.url }}" width=200 height=200 alt="{{ page_user.first_name  }} {{ page_user.last_name  }}"  class="rounded">
             </a>
             {% else %} 
-                <img src="{% static 'artsite/images/default-profile.png' %}" width=200 height=200 alt="{{ page_user.first_name  }} {{ page_user.last_name  }}"  class="rounded">
+                <img src="/media/images/profile/default-profile.png" width=200 height=200 alt="{{ page_user.first_name  }} {{ page_user.last_name  }}"  class="rounded">
 
             {% endif %}
       </div>
