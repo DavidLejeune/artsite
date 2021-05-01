@@ -8,6 +8,7 @@ Add artwork
 
 {% if user.is_superuser %}
     <h1>Add artwork</h1>
+    <br>
     <div class="form-control">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
