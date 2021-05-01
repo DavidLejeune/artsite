@@ -87,7 +87,6 @@
 -->
 <br/>
 
-{{  artwork.profile.page_user }}
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
@@ -97,9 +96,9 @@
       </div>
       <div class="col-md-10">
         <div class="card-body">
-            {%  if artwork.page_user.profile_pic %}
+            {%  if artwork.author.profile.profile_pic %}
 
-            <a href="{% url 'show_profile_page' page_user.id %}" class="nounderline">
+            <a href="{% url 'show_profile_page' artwork.author.profile.id %}" class="text-decoration-none text-reset">
                 <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
               </a>
             {% else %}
