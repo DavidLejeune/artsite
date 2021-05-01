@@ -89,14 +89,20 @@
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
-            {% if artwork.author.profile.profile_pic %}
-                <img src="{{ artwork.author.profile.profile_pic.url }}" width=200 height=200 alt="{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}"  class="rounded">
-            {% endif %}
+
       </div>
       <div class="col-md-10">
         <div class="card-body">
-          <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
-          
+            {%  if artwork.author.profile.id %}
+
+            <a href="{% url 'show_profile_page' page_user.id %}" class="nounderline">
+                <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
+              </a>
+            {% else %}
+
+                <h5 class="card-title">{{ artwork.author.first_name  }} {{ artwork.author.last_name  }}</h5>
+            {% endif %}
+            
           <p class="card-text"><small class="text-muted">
               {% if artwork.author.profile.website_url %}
                 <a href="{{ artwork.author.profile.website_url }}">Website</a>
