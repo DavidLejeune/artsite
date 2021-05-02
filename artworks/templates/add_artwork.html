@@ -4,6 +4,12 @@
 Add artwork
 {% endblock %}   
 
+
+{% block style %} 
+<script src="/staticfiles/ckeditor/ckeditor-init.js"></script>
+{% endblock %}   
+
+
 {% block content %}
 
 {% if user.is_superuser %}
